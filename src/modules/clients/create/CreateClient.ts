@@ -1,4 +1,4 @@
-import prisma from "../../../../database/prismaClient";
+import prisma from "../../../database/prismaClient";
 import { hash } from "bcrypt";
 
 interface ICreateClient {
@@ -6,7 +6,7 @@ interface ICreateClient {
   password: string;
 }
 
-export class CreateClientUseCase {
+export default class CreateClient {
   public async execute({ username, password }: ICreateClient) {
     // Validar se o cliente existe:
     const clientExist = await prisma.clients.findFirst({

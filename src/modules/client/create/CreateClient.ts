@@ -8,16 +8,14 @@ interface ICreateClient {
 
 export default class CreateClient {
   public async execute({ username, password }: ICreateClient) {
-    // Validar se o cliente existe:
-    const clientExist = await prisma.clients.findFirst({
+    // Validar se o client existe:
+    const clientExist = await prisma.clients.findUnique({
       where: {
-        username: {
-          mode: "insensitive",
-        },
+        username: username,
       },
     });
 
-    // Caso exista um cliente, desparar um erro:
+    // Caso exista um client, desparar um erro:
     if (clientExist) {
       throw new Error("Client already exists.");
     }
@@ -25,6 +23,7 @@ export default class CreateClient {
     // Criptografar a senha:
     const hashPassword = await hash(password, 10);
 
+    // Salvar o client.
     const client = await prisma.clients.create({
       data: {
         username: username,

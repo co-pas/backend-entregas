@@ -1,6 +1,6 @@
+import "express-async-errors";
 import express, { NextFunction, Request, Response } from "express";
 import routes from "./routes";
-import "express-async-errors";
 
 import Settings from "./config/settings";
 

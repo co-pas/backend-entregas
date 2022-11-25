@@ -15,7 +15,7 @@ export default class CreateDeliveryman {
       },
     });
 
-    // Caso exista um deliveryman, desparar um erro:
+    // Caso exista um deliveryman, disparar um erro:
     if (deliverymanExist) {
       throw new Error("Deliveryman already exists.");
     }

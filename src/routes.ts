@@ -8,6 +8,8 @@ import AuthenticateDeliverymanController from "./modules/account/authenticateDel
 
 import CreateDeliveryController from "./modules/delivery/create/CreateDeliveryController";
 
+import ensureAuthenticateClient from "./middlewares/ensureAuthenticateClient";
+
 const routes = Router();
 
 // Client Controllers:
@@ -30,6 +32,6 @@ routes.post("/deliveryman", createDeliveryman.handle);
 routes.post("/deliveryman/authenticate", authenticateDeliveryman.handle);
 
 // Delivery Routes:
-routes.post("/delivery", createDelivery.handle);
+routes.post("/delivery", ensureAuthenticateClient, createDelivery.handle);
 
 export default routes;

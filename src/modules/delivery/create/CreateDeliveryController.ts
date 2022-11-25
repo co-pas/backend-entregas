@@ -3,7 +3,8 @@ import CreateDelivery from "./CreateDelivery";
 
 export default class CreateDeliveryController {
   public async handle(request: Request, response: Response) {
-    const { item_name, id_client } = request.body;
+    const { item_name } = request.body;
+    const { id_client } = request;
 
     const createDelivery = new CreateDelivery();
 

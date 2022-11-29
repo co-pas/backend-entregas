@@ -1,15 +1,16 @@
 import { Router } from "express";
 
-import AuthenticateClientController from "./modules/account/authenticateClient/AuthenticateClientController";
-import CreateClientController from "./modules/client/create/CreateClientController";
+import AuthenticateClientController from "./modules/client/authenticateClient/AuthenticateClientController";
+import CreateClientController from "./modules/client/createClient/CreateClientController";
 
-import CreateDeliverymanController from "./modules/deliveryman/create/CreateDeliverymanController";
-import AuthenticateDeliverymanController from "./modules/account/authenticateDeliveryman/AuthenticateDeliverymanController";
+import CreateDeliverymanController from "./modules/deliveryman/createDeliveryman/CreateDeliverymanController";
+import AuthenticateDeliverymanController from "./modules/deliveryman/authenticateDeliveryman/AuthenticateDeliverymanController";
 
-import CreateDeliveryController from "./modules/delivery/create/CreateDeliveryController";
-import GetDeliveriesController from "./modules/delivery/availableDelivery/GetDeliveriesController";
+import CreateDeliveryController from "./modules/delivery/createDelivery/CreateDeliveryController";
+import AvailableDeliveryController from "./modules/delivery/availableDelivery/AvailableDeliveryController";
 
 import ensureAuthenticateClient from "./middlewares/ensureAuthenticateClient";
+import ensureAuthenticateDeliveryman from "./middlewares/ensureAuthenticateDeliveryman";
 
 const routes = Router();
 
@@ -23,7 +24,7 @@ const authenticateDeliveryman = new AuthenticateDeliverymanController();
 
 // Delivery Controllers:
 const createDelivery = new CreateDeliveryController();
-const getDeliveries = new GetDeliveriesController();
+const availableDelivery = new AvailableDeliveryController();
 
 // Client Routes:
 routes.post("/client", createClient.handle);
@@ -35,6 +36,11 @@ routes.post("/deliveryman/authenticate", authenticateDeliveryman.handle);
 
 // Delivery Routes:
 routes.post("/delivery", ensureAuthenticateClient, createDelivery.handle);
-routes.get("/delivery/available", getDeliveries.handle);
+
+routes.get(
+  "/delivery/available",
+  ensureAuthenticateDeliveryman,
+  availableDelivery.handle
+);
 
 export default routes;

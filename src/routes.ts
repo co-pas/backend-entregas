@@ -11,6 +11,7 @@ import AvailableDeliveryController from "./modules/delivery/availableDelivery/Av
 
 import ensureAuthenticateClient from "./middlewares/ensureAuthenticateClient";
 import ensureAuthenticateDeliveryman from "./middlewares/ensureAuthenticateDeliveryman";
+import UpdateDeliverymanController from "./modules/delivery/updateDeliveryman/UpdateDeliverymanController";
 
 const routes = Router();
 
@@ -25,6 +26,7 @@ const authenticateDeliveryman = new AuthenticateDeliverymanController();
 // Delivery Controllers:
 const createDelivery = new CreateDeliveryController();
 const availableDelivery = new AvailableDeliveryController();
+const updateDeliveryman = new UpdateDeliverymanController();
 
 // Client Routes:
 routes.post("/client", createClient.handle);
@@ -41,6 +43,12 @@ routes.get(
   "/delivery/available",
   ensureAuthenticateDeliveryman,
   availableDelivery.handle
+);
+
+routes.put(
+  "/delivery/updateDeliveryman/:id",
+  ensureAuthenticateDeliveryman,
+  updateDeliveryman.handle
 );
 
 export default routes;

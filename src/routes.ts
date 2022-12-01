@@ -11,10 +11,10 @@ import CreateDeliverymanController from "./modules/deliveryman/useCases/createDe
 import AuthenticateDeliverymanController from "./modules/deliveryman/useCases/authenticateDeliveryman/AuthenticateDeliverymanController";
 import UpdateDeliverymanController from "./modules/deliveryman/delivery/useCases/updateDeliveryman/UpdateDeliverymanController";
 import FindDeliveriesController from "./modules/deliveryman/delivery/useCases/findDeliveries/FindDeliveriesController";
+import UpdateEndDateController from "./modules/deliveryman/delivery/useCases/updateEndDate/UpdateEndDateController";
 
 import CreateDeliveryController from "./modules/client/delivery/useCases/createDelivery/CreateDeliveryController";
 import AvailableDeliveriesController from "./modules/deliveryman/delivery/useCases/availableDeliveries/AvailableDeliveriesController";
-
 const routes = Router();
 
 // Client Controllers:
@@ -29,6 +29,7 @@ const authenticateDeliveryman = new AuthenticateDeliverymanController();
 const availableDeliveries = new AvailableDeliveriesController();
 const updateDeliveryman = new UpdateDeliverymanController();
 const findDeliveries = new FindDeliveriesController();
+const updateEndDate = new UpdateEndDateController();
 
 // Client Routes:
 routes.post("/client", createClient.handle);
@@ -46,6 +47,11 @@ routes.put(
   "/delivery/updateDeliveryman/:id",
   ensureAuthenticateDeliveryman,
   updateDeliveryman.handle
+);
+routes.put(
+  "/delivery/updateEndDate/:id",
+  ensureAuthenticateDeliveryman,
+  updateEndDate.handle
 );
 
 // Deliveryman Routes:

@@ -2,9 +2,14 @@ import prisma from "../../../../database/prismaClient";
 
 export default class FindDeliveries {
   public async execute(id_client: string) {
-    const delivery = await prisma.deliveries.findMany({
+    const delivery = await prisma.clients.findMany({
       where: {
-        id_client: id_client,
+        id: id_client,
+      },
+      select: {
+        deliveries: true,
+        id: true,
+        username: true,
       },
     });
 

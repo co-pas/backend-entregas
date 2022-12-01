@@ -1,4 +1,4 @@
-import prisma from "../../../database/prismaClient";
+import prisma from "../../../../database/prismaClient";
 
 export default class AvailableDelivery {
   public async execute() {

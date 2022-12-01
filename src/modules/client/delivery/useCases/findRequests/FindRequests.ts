@@ -1,8 +1,8 @@
-import prisma from "../../../../database/prismaClient";
+import prisma from "../../../../../database/prismaClient";
 
-export default class FindDeliveries {
+export default class FindRequests {
   public async execute(id_client: string) {
-    const delivery = await prisma.clients.findMany({
+    const requests = await prisma.clients.findMany({
       where: {
         id: id_client,
       },
@@ -13,6 +13,6 @@ export default class FindDeliveries {
       },
     });
 
-    return delivery;
+    return requests;
   }
 }

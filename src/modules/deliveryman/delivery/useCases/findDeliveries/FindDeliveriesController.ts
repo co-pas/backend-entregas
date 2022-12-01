@@ -3,11 +3,11 @@ import FindDeliveries from "./FindDeliveries";
 
 export default class FindDeliveriesController {
   public async handle(request: Request, response: Response) {
-    const { id_client } = request;
+    const { id_deliveryman } = request;
 
     const findDeliveries = new FindDeliveries();
 
-    const result = await findDeliveries.execute(id_client);
+    const result = await findDeliveries.execute(id_deliveryman);
 
     return response.json(result);
   }

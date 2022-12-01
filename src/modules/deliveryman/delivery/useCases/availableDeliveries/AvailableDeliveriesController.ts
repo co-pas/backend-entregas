@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import AvailableDelivery from "./AvailableDelivery";
+import AvailableDelivery from "./AvailableDeliveries";
 
-export default class AvailableDeliveryController {
+export default class AvailableDeliveriesController {
   public async handle(request: Request, response: Response) {
     const availableDelivery = new AvailableDelivery();
 

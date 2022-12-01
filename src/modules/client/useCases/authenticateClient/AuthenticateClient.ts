@@ -1,4 +1,4 @@
-import prisma from "../../../database/prismaClient";
+import prisma from "../../../../database/prismaClient";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 

@@ -1,6 +1,6 @@
-import prisma from "../../../../database/prismaClient";
+import prisma from "../../../../../database/prismaClient";
 
-export default class AvailableDelivery {
+export default class AvailableDeliveries {
   public async execute() {
     const deliveries = await prisma.deliveries.findMany({
       where: {

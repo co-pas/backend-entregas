@@ -1,4 +1,4 @@
-Criando um Back-End de entregas com o Ignite da RocketSeat.
+Back-End de entregas com o Ignite da RocketSeat.
 
 Bibliotecas usadas:
 

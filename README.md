@@ -1,5 +1,6 @@
 Back-End de entregas com o Ignite da RocketSeat.
 
-Bibliotecas usadas:
+Dependencias usadas:
 
-Express, Typescript, Prisma, Bcrypt, JsonWebToken
+express, bcrypt, express-async-errors, jsonwebtoken, 
+typescript, ts-node-dev, prisma
